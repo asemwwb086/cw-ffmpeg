@@ -766,7 +766,7 @@ RUN echo "$FFMPEG_SHA256  ffmpeg.tar.bz2" | sha256sum --status -c -
 RUN \
   tar $TAR_OPTS ffmpeg.tar.bz2 && \
   FDKAAC_FLAGS=$(if [[ -n "$ENABLE_FDKAAC" ]] ;then echo " --enable-libfdk-aac --enable-nonfree " ;else echo ""; fi) && \
-  cd ffmpeg-* && \
+  cd ffmpeg* && \
   sed -i 's/add_ldexeflags -fPIE -pie/add_ldexeflags -fPIE -static-pie/' configure && \
   ./configure \
   --pkg-config-flags="--static" \
